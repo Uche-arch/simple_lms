@@ -7,15 +7,25 @@
   import { cn } from "@/lib/utils";
   import { LucideIcon } from "lucide-react";
 
+  // interface Banner1Props {
+  //   title: string;
+  //   description: string;
+  //   linkText: string;
+  //   linkUrl: string;
+  //   icon?: LucideIcon;
+  //   defaultVisible?: boolean;
+  //   className?: string;
+  // }
+
   interface Banner1Props {
-    title: string;
-    description: string;
-    linkText: string;
-    linkUrl: string;
-    icon?: LucideIcon;
-    defaultVisible?: boolean;
-    className?: string;
-  }
+  title: string;
+  description: string;
+  linkText?: string;
+  linkUrl?: string;
+  icon?: LucideIcon;
+  defaultVisible?: boolean;
+  className?: string;
+}
 
   const Banner1 = ({
     title = "Version 2.0 is now available!",
