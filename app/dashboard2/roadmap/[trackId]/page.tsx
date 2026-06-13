@@ -194,7 +194,7 @@ export default function DynamicRoadmapWorkspacePage() {
   }
 
   return (
-    <div className="max-w-5xl p-6 mx-auto space-y-6">
+    <div className="max-w-5xl mx-auto space-y-6">
       
       {/* Dynamic Back-Link Action Row */}
       <Button 
