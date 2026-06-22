@@ -12,7 +12,8 @@ export const roadmapsData: Record<string, RoadmapTrack> = {
   html: {
     id: "html",
     title: "HTML Fundamentals",
-    description: "The starting point for every website. Learn structure, semantics, and best practices.",
+    description:
+      "The starting point for every website. Learn structure, semantics, and best practices.",
     nodes: [
       {
         id: "html-intro",
@@ -247,7 +248,8 @@ export const roadmapsData: Record<string, RoadmapTrack> = {
           description:
             "Convert a desktop design into a fully responsive experience that works across mobile, tablet, and desktop devices.",
 
-          referenceUrl: "https://www.frontendmentor.io/challenges/clipboard-landing-page-5cc9bccd6c4c91111378ecb9",
+          referenceUrl:
+            "https://www.frontendmentor.io/challenges/clipboard-landing-page-5cc9bccd6c4c91111378ecb9",
 
           referenceLabel: "Frontend Mentor Challenges",
         },
@@ -273,7 +275,8 @@ export const roadmapsData: Record<string, RoadmapTrack> = {
           description:
             "Build an interactive UI card with hover effects, transitions, transforms, and subtle animations.",
 
-          referenceUrl: "https://www.frontendmentor.io/challenges/order-summary-component-QlPmajDUj",
+          referenceUrl:
+            "https://www.frontendmentor.io/challenges/order-summary-component-QlPmajDUj",
 
           referenceLabel: "Frontend Mentor Challenges",
         },
@@ -298,50 +301,53 @@ export const roadmapsData: Record<string, RoadmapTrack> = {
           description:
             "Build a complete responsive landing page using Flexbox, Grid, responsive design techniques, and animations. This project should be portfolio-ready.",
 
-          referenceUrl: "https://www.frontendmentor.io/challenges/clipboard-landing-page-5cc9bccd6c4c91111378ecb9",
+          referenceUrl:
+            "https://www.frontendmentor.io/challenges/clipboard-landing-page-5cc9bccd6c4c91111378ecb9",
 
           referenceLabel: "Frontend Mentor Landing Page Challenge",
         },
       },
-        // {
-        //   id: "css-portfolio-project",
+      // {
+      //   id: "css-portfolio-project",
 
-        //   title: "Build Your Portfolio Website",
+      //   title: "Build Your Portfolio Website",
 
-        //   duration: "3 - 5 hrs",
+      //   duration: "3 - 5 hrs",
 
-        //   summary:
-        //     "Apply everything you've learned in HTML and CSS by building a personal portfolio website. Showcase your projects, skills, and learning journey in a real-world project you can continue improving over time.",
+      //   summary:
+      //     "Apply everything you've learned in HTML and CSS by building a personal portfolio website. Showcase your projects, skills, and learning journey in a real-world project you can continue improving over time.",
 
-        //   videoUrl: "https://www.youtube.com/watch?v=ldwlOzRvYOU",
+      //   videoUrl: "https://www.youtube.com/watch?v=ldwlOzRvYOU",
 
-        //   articleUrl: "https://developer.mozilla.org/en-US/docs/Learn",
+      //   articleUrl: "https://developer.mozilla.org/en-US/docs/Learn",
 
-        //   project: {
-        //     title: "Personal Portfolio Website",
+      //   project: {
+      //     title: "Personal Portfolio Website",
 
-        //     description:
-        //       "Build your own developer portfolio. Include a hero section, about section, skills, projects, contact section, and responsive navigation. Add every project you've completed throughout this roadmap and make the site fully responsive.",
+      //     description:
+      //       "Build your own developer portfolio. Include a hero section, about section, skills, projects, contact section, and responsive navigation. Add every project you've completed throughout this roadmap and make the site fully responsive.",
 
-        //     referenceUrl: "https://www.youtube.com/watch?v=ldwlOzRvYOU",
+      //     referenceUrl: "https://www.youtube.com/watch?v=ldwlOzRvYOU",
 
-        //     referenceLabel: "Portfolio Project Walkthrough",
-        //   },
-        // },
-        {
-  "id": "css-portfolio-project",
-  "title": "Build Your Portfolio Website",
-  "duration": "3 - 5 hrs",
-  "summary": "Time to step away from code-alongs! Apply everything you've learned about layout, responsiveness, and animations to design and build your own custom personal portfolio website completely from scratch.",
-  "videoUrl": "#",
-  "articleUrl": "https://developer.mozilla.org/en-US/docs/Learn",
-  "project": {
-    "title": "Personal Portfolio Website",
-    "description": "Design and build your own custom developer portfolio from scratch using only HTML and CSS. You must independently engineer a responsive navbar, a hero section, an about/skills block, a CSS Grid projects grid - linking all your previous work, and a contact section.",
-    "referenceUrl": "#",
-    "referenceLabel": "Independent Capstone Project"
-  }
-}
+      //     referenceLabel: "Portfolio Project Walkthrough",
+      //   },
+      // },
+      {
+        id: "css-portfolio-project",
+        title: "Build Your Portfolio Website",
+        duration: "3 - 5 hrs",
+        summary:
+          "Time to step away from code-alongs! Apply everything you've learned about layout, responsiveness, and animations to design and build your own custom personal portfolio website completely from scratch.",
+        videoUrl: "#",
+        articleUrl: "https://developer.mozilla.org/en-US/docs/Learn",
+        project: {
+          title: "Personal Portfolio Website",
+          description:
+            "Design and build your own custom developer portfolio from scratch using only HTML and CSS. You must independently engineer a responsive navbar, a hero section, an about/skills block, a CSS Grid projects grid - linking all your previous work, and a contact section.",
+          referenceUrl: "#",
+          referenceLabel: "Independent Capstone Project",
+        },
+      },
     ],
   },
 };

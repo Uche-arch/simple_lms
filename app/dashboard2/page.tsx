@@ -974,11 +974,15 @@ export default function DashboardPage() {
   const [personalBest, setPersonalBest] = useState(0);
   const [completedRoadmaps, setCompletedRoadmaps] = useState(0);
 
+  // ADD THIS LINE - To the chart only renders after the component has fully mounted on the client.
+  const [isMounted, setIsMounted] = useState(false);
+
   const [rawChartData, setRawChartData] = useState<any>(null);
   const [activities, setActivities] = useState<Activity[]>([]);
   const [timeframe, setTimeframe] = useState<Timeframe>("7d");
 
   useEffect(() => {
+    setIsMounted(true); // ADD THIS LINE
     const stats = getDashboardStats();
     setPlatformVisits(stats.platformVisits);
     setActiveStudents(stats.activeStudents);
@@ -1111,23 +1115,19 @@ export default function DashboardPage() {
         </Card> */}
 
         <Card>
-  <CardHeader className="flex flex-row items-center justify-between pb-2">
-    <CardTitle className="text-sm font-medium">
-      Study Streak
-    </CardTitle>
-    <Flame className="h-4 w-4 text-muted-foreground" />
-  </CardHeader>
+          <CardHeader className="flex flex-row items-center justify-between pb-2">
+            <CardTitle className="text-sm font-medium">Study Streak</CardTitle>
+            <Flame className="h-4 w-4 text-muted-foreground" />
+          </CardHeader>
 
-  <CardContent>
-    <div className="text-3xl font-bold">
-      {streak}
-    </div>
+          <CardContent>
+            <div className="text-3xl font-bold">{streak}</div>
 
-    <p className="text-xs text-muted-foreground">
-      Personal best: {personalBest} days
-    </p>
-  </CardContent>
-</Card>
+            <p className="text-xs text-muted-foreground">
+              Personal best: {personalBest} days
+            </p>
+          </CardContent>
+        </Card>
 
         <Card>
           <CardHeader className="flex flex-row items-center justify-between pb-2">
@@ -1179,66 +1179,71 @@ export default function DashboardPage() {
       have space to render beautifully without overlapping.
     */}
           <div className="h-[350px] w-full min-w-[600px] sm:min-w-0">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart
-                data={processedChartData}
-                margin={{ top: 5, right: 10, left: -20, bottom: 0 }}
-              >
-                <CartesianGrid
-                  strokeDasharray="3 3"
-                  vertical={false}
-                  className="stroke-muted/90"
-                />
-                <XAxis
-                  dataKey="label"
-                  stroke="#888888"
-                  fontSize={12}
-                  tickLine={false}
-                  axisLine={false}
-                  dy={10}
-                />
-                <YAxis
-                  stroke="#888888"
-                  fontSize={12}
-                  tickLine={false}
-                  axisLine={false}
-                />
-                <Tooltip
-                  content={({ active, payload }) => {
-                    if (active && payload && payload.length) {
-                      const val = payload[0].value;
-                      return (
-                        <div className="rounded-lg border bg-background p-2 shadow-sm text-xs">
-                          <div className="grid grid-cols-2 gap-2">
-                            <div className="flex flex-col">
-                              <span className="text-[10px] uppercase text-muted-foreground font-medium">
-                                {payload[0].payload.label}
-                              </span>
-                              <span className="font-bold text-foreground">
-                                {val !== undefined
-                                  ? `${val} Users`
-                                  : "No data yet"}
-                              </span>
+            {isMounted ? (
+              <ResponsiveContainer width="100%" height={350}>
+                <LineChart
+                  data={processedChartData}
+                  margin={{ top: 5, right: 10, left: -20, bottom: 0 }}
+                >
+                  <CartesianGrid
+                    strokeDasharray="3 3"
+                    vertical={false}
+                    className="stroke-muted/90"
+                  />
+                  <XAxis
+                    dataKey="label"
+                    stroke="#888888"
+                    fontSize={12}
+                    tickLine={false}
+                    axisLine={false}
+                    dy={10}
+                  />
+                  <YAxis
+                    stroke="#888888"
+                    fontSize={12}
+                    tickLine={false}
+                    axisLine={false}
+                  />
+                  <Tooltip
+                    content={({ active, payload }) => {
+                      if (active && payload && payload.length) {
+                        const val = payload[0].value;
+                        return (
+                          <div className="rounded-lg border bg-background p-2 shadow-sm text-xs">
+                            <div className="grid grid-cols-2 gap-2">
+                              <div className="flex flex-col">
+                                <span className="text-[10px] uppercase text-muted-foreground font-medium">
+                                  {payload[0].payload.label}
+                                </span>
+                                <span className="font-bold text-foreground">
+                                  {val !== undefined
+                                    ? `${val} Users`
+                                    : "No data yet"}
+                                </span>
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    }
-                    return null;
-                  }}
-                />
-                <Line
-                  type="monotone"
-                  dataKey="users"
-                  stroke="currentColor"
-                  className="text-primary"
-                  strokeWidth={2}
-                  activeDot={{ r: 4, strokeWidth: 0 }}
-                  dot={false}
-                  connectNulls={false}
-                />
-              </LineChart>
-            </ResponsiveContainer>
+                        );
+                      }
+                      return null;
+                    }}
+                  />
+                  <Line
+                    type="monotone"
+                    dataKey="users"
+                    stroke="currentColor"
+                    className="text-primary"
+                    strokeWidth={2}
+                    activeDot={{ r: 4, strokeWidth: 0 }}
+                    dot={false}
+                    connectNulls={false}
+                  />
+                </LineChart>
+              </ResponsiveContainer>
+            ) : (
+              // Simple empty wrapper with matching height to prevent layout shift while mounting
+              <div className="h-full w-full bg-muted/10 animate-pulse rounded-lg" />
+            )}
           </div>
         </CardContent>
       </Card>

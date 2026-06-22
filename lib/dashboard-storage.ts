@@ -390,23 +390,49 @@ export function getActivities(): ActivityItem[] {
   );
 }
 
+// export function saveActivity(activity: ActivityItem) {
+//   const activities = getActivities();
+//   const existingIndex = activities.findIndex(
+//     (item) => item.name === activity.name,
+//   );
+
+//   // if (existingIndex !== -1) {
+//   //   activities[existingIndex] = activity;
+//   // } else {
+//   //   activities.unshift(activity);
+//   // }
+
+//   if (existingIndex !== -1) {
+//     activities.splice(existingIndex, 1);
+//   }
+
+//   activities.unshift(activity);
+
+//   localStorage.setItem(ACTIVITY_KEY, JSON.stringify(activities));
+// }
+
 export function saveActivity(activity: ActivityItem) {
   const activities = getActivities();
+  
+  // 1. Find if this roadmap already exists in the activity feed
   const existingIndex = activities.findIndex(
     (item) => item.name === activity.name,
   );
 
-  // if (existingIndex !== -1) {
-  //   activities[existingIndex] = activity;
-  // } else {
-  //   activities.unshift(activity);
-  // }
-
+  // 2. Remove it if it exists so we don't have duplicates
   if (existingIndex !== -1) {
     activities.splice(existingIndex, 1);
   }
 
-  activities.unshift(activity);
+  // 3. CRITICAL: Force the timestamp to be right NOW 
+  // This ensures that the item you just clicked always has the newest time stub.
+  const updatedActivity = {
+    ...activity,
+    lastStudied: new Date().toISOString()
+  };
+
+  // 4. Push it straight to the top of the array
+  activities.unshift(updatedActivity);
 
   localStorage.setItem(ACTIVITY_KEY, JSON.stringify(activities));
 }
